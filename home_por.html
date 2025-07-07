@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Chintha Madushani, AI & Computer Vision Engineer with over 1 years of experience.">
+  <title>Chintha Madushani - AI & Computer Vision Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Custom Properties */
+    :root {
+      --primary-color: #00A8B5;
+      --secondary-color: #FF6F61;
+      --accent-color: #F6C107;
+      --text-color: #1A202C;
+      --text-secondary: #718096;
+      --bg-light: #F8FAFC;
+      --bg-dark: #1A2634;
+      --card-bg-light: #FFF;
+      --card-bg-dark: #2D3748;
+      --border-light: #E2E8F0;
+      --border-dark: #4A5568;
+    }
+
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height: 1.7;
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: #E2E8F0;
+    }
+
+    /* Animated Background with Parallax */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(0, 168, 181, 0.1), var(--bg-light));
+    }
+
+    body.dark-mode .animated-bg {
+      background: linear-gradient(to bottom, rgba(0, 168, 181, 0.1), var(--bg-dark));
+    }
+
+    .particle {
+      position: absolute;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: float 12s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) { width: 25px; height: 25px; top: 15%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 35px; height: 35px; top: 45%; left: 75%; animation-delay: 4s; }
+    .particle:nth-child(3) { width: 20px; height: 20px; top: 65%; left: 25%; animation-delay: 8s; }
+    .particle:nth-child(4) { width: 30px; height: 30px; top: 35%; left: 55%; animation-delay: 2s; }
+    .particle:nth-child(5) { width: 15px; height: 15px; top: 85%; left: 85%; animation-delay: 6s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+      50% { transform: translateY(-120px) scale(1.3); opacity: 0.6; }
+    }
+
+    /* Header and Navigation */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(0, 168, 181, 0.8));
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .nav-brand .logo-text {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover, .theme-toggle:focus {
+      transform: rotate(20deg);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 4px;
+      background-color: #E2E8F0;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      max-width: 1280px;
+      align-items: center;
+      gap: 3rem;
+      z-index: 1;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-title .greeting {
+      font-size: 1.6rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .hero-title .name {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin: 0.5rem 0;
+    }
+
+    .hero-subtitle {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    .typing-animation {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 4px solid var(--accent-color);
+      animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent-color); }
+    }
+
+    .hero-description {
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 1.5rem 0 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-buttons .cta-button {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button.primary {
+      background-color: var(--primary-color);
+      color: #FFF;
+    }
+
+    .cta-button.primary:hover, .cta-button.primary:focus {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    .cta-button.secondary {
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .cta-button.secondary:hover, .cta-button.secondary:focus {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      transform: translateY(-3px);
+    }
+
+    .social-links-hero a {
+      color: var(--text-secondary);
+      font-size: 1.8rem;
+      margin-right: 1.5rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .social-links-hero a:hover, .social-links-hero a:focus {
+      color: var(--secondary-color);
+      transform: scale(1.2);
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .floating-card {
+      position: relative;
+      animation: float-card 5s ease-in-out infinite;
+    }
+
+    .profile-img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 12px 24px rgba(0, 168, 181, 0.3);
+      loading: lazy;
+    }
+
+    .card-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 168, 181, 0.4), transparent);
+      z-index: -1;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-25px); }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .scroll-arrow i {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 5rem 2rem;
+      background-color: var(--card-bg-light);
+    }
+
+    body.dark-mode .about-section {
+      background-color: var(--card-bg-dark);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+
+    .about-container {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-title {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    body.dark-mode .about-title {
+      color: #E2E8F0;
+    }
+
+    .about-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .stats-container {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      justify-content: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--secondary-color);
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .skills-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .skill-category h4 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .skill-icon i {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-item span {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    body.dark-mode .skill-item span {
+      color: #E2E8F0;
+    }
+
+    .skill-progress {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-light);
+      border-radius: 6px;
+      margin-top: 0.8rem;
+      overflow: hidden;
+    }
+
+    body.dark-mode .skill-progress {
+      background-color: var(--border-dark);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      width: var(--progress);
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, var(--bg-light), rgba(0, 168, 181, 0.15));
+    }
+
+    .projects-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background-color: var(--border-light);
+      color: var(--text-color);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .filter-btn {
+      background-color: var(--border-dark);
+      color: #E2E8F0;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover,
+    .filter-btn:focus {
+      background-color: var(--primary-color);
+      color: #FFF;
+      transform: translateY(-2px);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg-light);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 168, 181, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.dark-mode .project-card {
+      background-color: var(--card-bg-dark);
+    }
+
+    .project-card:hover, .project-card:focus-within {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 168, 181, 0.25);
+    }
+
+    .project-image {
+      position: relative;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 168, 181, 0.75);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .project-overlay,
+    .project-card:focus-within .project-overlay {
+      opacity: 1;
+    }
+
+    .project-links a {
+      color: #FFF;
+      font-size: 1.8rem;
+      margin: 0 1.2rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .project-links a:hover, .project-links a:focus {
+      color: var(--accent-color);
+      transform: scale(1.2);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .project-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .tech-stack .tech-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background-color: var(--border-light);
+      color: var(--text-color);
+      border-radius: 20px;
+      font-size: 0.95rem;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode .tech-tag {
+      background-color: var(--border-dark);
+      color: #E2E8F0;
+    }
+
+    /* Experience Section */
+    .experience-section {
+      padding: 5rem 2rem;
+      background-color: var(--card-bg-light);
+    }
+
+    body.dark-mode .experience-section {
+      background-color: var(--card-bg-dark);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-marker {
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+      font-size: 1.8rem;
+      margin-right: 1.5rem;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-header h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .timeline-date {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .timeline-company {
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .timeline-company {
+      color: #E2E8F0;
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, rgba(0, 168, 181, 0.15), var(--bg-light));
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .contact-icon i {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    body.dark-mode .contact-label {
+      color: #E2E8F0;
+    }
+
+    .contact-value {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .social-links a {
+      color: var(--text-secondary);
+      font-size: 1.8rem;
+      margin-right: 1.5rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .social-links a:hover, .social-links a:focus {
+      color: var(--secondary-color);
+      transform: scale(1.2);
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.6rem;
+    }
+
+    body.dark-mode .form-group label {
+      color: #E2E8F0;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      background-color: var(--card-bg-light);
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group textarea {
+      background-color: var(--card-bg-dark);
+      border-color: var(--border-dark);
+      color: #E2E8F0;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-button {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      background-color: var(--primary-color);
+      color: #FFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .submit-button:hover, .submit-button:focus {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 3rem 2rem;
+      background-color: var(--text-color);
+      color: #E2E8F0;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-text i {
+      color: var(--secondary-color);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover, .footer-links a:focus {
+      color: var(--primary-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 1rem;
+      }
+
+      .nav-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--text-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1.5rem;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu li {
+        margin: 0.8rem 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-title .name {
+        font-size: 3rem;
+      }
+
+      .hero-image {
+        margin-top: 3rem;
+      }
+
+      .about-container,
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title .name {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .profile-img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg" aria-hidden="true">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-brand">
+        <span class="logo-text">CM</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section" data-aos="fade-up">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="greeting">Hello, I'm</span>
+          <span class="name">Chintha Madushani</span>
+        </h1>
+        <h2 class="hero-subtitle">
+          <span class="typing-animation">AI & Computer Vision Engineer</span>
+        </h2>
+        <p class="hero-description">
+          Passionate AI expert with over 5 years of experience in computer vision, machine learning, and innovative solutions. Transforming complex ideas into impactful, intelligent systems.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="cta-button primary">Get In Touch</a>
+          <a href="#projects" class="cta-button secondary">View My Work</a>
+        </div>
+        <div class="social-links-hero" aria-label="Social media links">
+          <a href="https://linkedin.com/in/chintha-madushani" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/chintha-madushani" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:chinthamadushnipitigala@gmail.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="floating-card">
+          <img src="chi.jpeg" alt="Chintha Madushani Profile" class="profile-img" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-container">
+        <div class="about-content">
+          <div class="about-text">
+            <h3 class="about-title">AI and Computer Vision Expert</h3>
+            <p class="about-description">
+              I am a dedicated AI and Computer Vision professional with over 1 years of specialized experience in advanced machine learning and vision technologies. Holding a Bachelor's degree in Information Technology (Mobile Computing and Networking) from Horizon Campus (2020-2024), I excel in delivering innovative, scalable solutions for complex challenges.
+            </p>
+            <p class="about-description">
+              At Onimta Information Technology, I lead the development of state-of-the-art AI algorithms, focusing on real-world applications in computer vision and predictive analytics.
+            </p>
+            <div class="stats-container">
+              <div class="stat-item">
+                <div class="stat-number">1+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Projects Completed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Technologies Mastered</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-section">
+          <div class="skill-category">
+            <h4>Technical Skills</h4>
+            <div class="skill-grid">
+              <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-eye"></i></div>
+                <span>Computer Vision</span>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="--progress: 92%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <span>Machine Learning</span>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="--progress: 88%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <span>Python</span>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="--progress: 93%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                <span>Mobile Development</span>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="--progress: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-filter" role="tablist">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="ai" role="tab" aria-selected="false">AI/ML</button>
+        <button class="filter-btn" data-filter="vision" role="tab" aria-selected="false">Computer Vision</button>
+        <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile Apps</button>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" data-category="vision ai" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="chip-detection.jpg" alt="Chip Detection System" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Chip Detection Project"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Chip Detection GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Chip Detection System</h3>
+            <p>Advanced computer vision system for real-time chip identification in manufacturing, leveraging YOLOv8 and custom CNN models for high accuracy.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Deep Learning</span>
+              <span class="tech-tag">YOLOv8</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="ai vision" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="face-recognition.jpg" alt="Face Recognition System" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Face Recognition Project"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Face Recognition GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Face Recognition System</h3>
+            <p>Robust facial recognition system with advanced preprocessing to handle diverse lighting, angles, and occlusions, powered by TensorFlow and DLib.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Neural Networks</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">DLib</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="mobile ai" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="diabetic-app.jpg" alt="Diabetic Care App" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Diabetic Care App"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Diabetic Care GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Diabetic Care App</h3>
+            <p>AI-powered mobile app for diabetic patients, featuring predictive analytics for glucose levels and personalized health recommendations.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Android</span>
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">ML Kit</span>
+              <span class="tech-tag">Firebase</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="vision ai" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="hand-tracking.jpg" alt="Hand Tracking System" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Hand Tracking Project"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Hand Tracking GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Hand Tracking System</h3>
+            <p>Real-time gesture recognition system for interactive applications, utilizing MediaPipe and optimized for low-latency performance.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">MediaPipe</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Real-time</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="ai" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="sentiment-analysis.jpg" alt="Sentiment Analysis Engine" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Sentiment Analysis Project"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Sentiment Analysis GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Sentiment Analysis Engine</h3>
+            <p>NLP-based system for real-time sentiment analysis of social media data, using BERT and fine-tuned for multilingual contexts.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">BERT</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="vision ai" data-aos="zoom-in">
+          <div class="project-image">
+            <img src="object-segmentation.jpg" alt="Object Segmentation System" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View Object Segmentation Project"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" aria-label="Object Segmentation GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Object Segmentation System</h3>
+            <p>Advanced instance segmentation for autonomous systems, utilizing Mask R-CNN for precise object boundary detection.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Mask R-CNN</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">TensorFlow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Experience & Education</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Artificial Intelligence Engineer</h3>
+              <span class="timeline-date">June 2024 - Present</span>
+            </div>
+            <p class="timeline-company">Onimta Information Technology</p>
+            <p class="timeline-description">
+              Leading development of advanced computer vision and AI solutions, including real-time object detection and predictive analytics, using tools like Roboflow, Weights & Biases, and PyTorch.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>BSc in Information Technology</h3>
+              <span class="timeline-date">2020 - 2024</span>
+            </div>
+            <p class="timeline-company">Horizon Campus, Malabe</p>
+            <p class="timeline-description">
+              Specialized in Mobile Computing and Networking, with a focus on AI-driven mobile applications and computer vision systems.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Hackathopia Award - First Place</h3>
+              <span class="timeline-date">2023</span>
+            </div>
+            <p class="timeline-company">Campus Hackathon</p>
+            <p class="timeline-description">
+              Awarded for developing an innovative AI solution in a competitive hackathon, showcasing technical excellence and creativity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p>Ready to innovate with AI and computer vision? Let's collaborate on your next project!</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">chinthamadushnipitigala@gmail.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+94 704351923</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Galle Road, Sri Lanka</span>
+              </div>
+            </div>
+          </div>
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://linkedin.com/in/chintha-madushani" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/chintha-madushani" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/chintha_m" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/chintha_madushani" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="portfolio-contact-form" aria-label="Contact form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required aria-required="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="submit-button">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>© 2025 Chintha Madushani. Crafted with <i class="fas fa-heart"></i> and passion for innovation.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 800, once: true });
+
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeIcon.classList.toggle('fa-moon');
+      themeIcon.classList.toggle('fa-sun');
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    });
+
+    // Project Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        
+        const filter = button.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transition = 'opacity 0.5s ease';
+            }, 100);
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 500);
+          }
+        });
+      });
+    });
+
+    // Form Submission Feedback
+    const form = document.getElementById('portfolio-contact-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
